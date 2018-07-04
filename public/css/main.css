@@ -1,0 +1,42 @@
+#searchbar{
+    margin-left: 250px;
+    width: 350px;
+    height: 40px;
+    background:rgba(233, 230, 230,0.2);
+}
+
+#search{
+    outline: none;
+    width: 310px;
+    height: 40px;
+    background-color: transparent;
+    padding:2px 10px;
+}
+
+#old{
+    display: none;
+}
+
+.del{
+    display: inline-block;
+}
+
+.width{
+    width:200px;
+}
+.onhover{
+    display: inline-block;
+    margin-right: 30px;
+}
+.labelshow{
+    background:lightgrey;
+    padding : 5px 10px;
+}
+.toadd{
+    display: inline-block;
+}
+
+.strikethrough{
+    text-decoration: line-through;
+}
+
