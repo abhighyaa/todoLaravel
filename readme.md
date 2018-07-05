@@ -3,7 +3,7 @@
 Using this application users can login and create the tasks to be done.
 
 User is welcomed by the home page. He can either register or login.
-![Homepage](https://raw.githubusercontent.com/Abhighyaa/todoLaravel/blob/master/Homepage.png)
+![Homepage](https://raw.githubusercontent.com/Abhighyaa/todoLaravel/master/Homepage.png)
 ![Register](https://raw.githubusercontent.com/Abhighyaa/todoLaravel/blob/master/Register.png)
 ![Login](https://raw.githubusercontent.com/Abhighyaa/todoLaravel/blob/master/Login.png)
 
