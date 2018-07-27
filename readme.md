@@ -1,60 +1,68 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# To-Do Application
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+Using this application users can login and create the tasks to be done.
 
-## About Laravel
+User is welcomed by the home page. He can either register or login.
+![Homepage](https://raw.githubusercontent.com/Abhighyaa/todoLaravel/master/Homepage.png)
+![Register](https://raw.githubusercontent.com/Abhighyaa/todoLaravel/master/Register.png)
+![Login](https://raw.githubusercontent.com/Abhighyaa/todoLaravel/master/Login.png)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+There By, he can create tasks.
+![create-tasks](https://raw.githubusercontent.com/Abhighyaa/todoLaravel/master/create_task.png)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Edit them by double clicking or through edit button.
+![edit-task](https://raw.githubusercontent.com/Abhighyaa/todoLaravel/master/edit_task.png)
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+User can sort the tasks by "present day tasks" as my day or time or as per his order.
+![sort-by](https://raw.githubusercontent.com/Abhighyaa/todoLaravel/master/sort_tasks_by.png)
+![myorder](https://raw.githubusercontent.com/Abhighyaa/todoLaravel/master/myorder.png)
 
-## Learning Laravel
+Archive tasks, trash tasks, pin tasks. 
+![options](https://raw.githubusercontent.com/Abhighyaa/todoLaravel/master/Options_for_each_task.png)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+User can view and unarchive the archived tasks.
+![archived](https://raw.githubusercontent.com/Abhighyaa/todoLaravel/master/Archived_tasks.png)
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+User can view and restore from the trashed tasks.
+![trashed](https://raw.githubusercontent.com/Abhighyaa/todoLaravel/master/Trashed_tasks.png)
 
-## Laravel Sponsors
+User can also create,delete or edit labels.
+![labels](https://raw.githubusercontent.com/Abhighyaa/todoLaravel/master/create_edit_delete_labels.png)
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
+User can view tasks related to a particular label.
+![label-specific-tasks](https://raw.githubusercontent.com/Abhighyaa/todoLaravel/master/Tasks_for_particular_label.png)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
+User can add and remove labels at Index page itself.
+![label-add-remove](https://raw.githubusercontent.com/Abhighyaa/todoLaravel/master/Screenshot from 2018-07-05 11-17-55.png)
 
-## Contributing
+User can view notifications like overdue tasks etc.
+![notifications](https://raw.githubusercontent.com/Abhighyaa/todoLaravel/master/Notifications.png)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+User can also edit his profile.
+![edit-profile](https://raw.githubusercontent.com/Abhighyaa/todoLaravel/master/edit_profile.png)
 
-## Security Vulnerabilities
+Also "Scheduling" is used to empty trashed tasks every week. And overdue tasks are checked every midnight.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Built with
 
-## License
+1. Laravel
+2. JQuery
+3. AJAX
+4. Bootstrap
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Prerequisites
+1. Laravel PHP framework
+2. Editor
+
+# Installing Laravel
+
+ Install [composer](https://getcomposer.org/).
+ Issue the Composer create-project command in your terminal:
+ 
+      composer create-project laravel/laravel {directory} 4.2 --prefer-dist
+
+# Server Requirements
+
+   1. PHP >= 5.4
+   2. MCrypt PHP Extension
+      
