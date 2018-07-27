@@ -32,7 +32,7 @@
                             <label for="due" class="col-md-4 col-form-label text-md-right">{{ __('Due date') }}</label>
 
                             <div class="col-md-6">
-                                <input id="due" type="date" name="due" value="{{ $task->due }}" required>
+                                <input id="due" type="date" onfocus="today()" name="due" value="{{ $task->due }}" required>
                             </div>
                         </div>    
 

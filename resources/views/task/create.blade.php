@@ -37,7 +37,7 @@
                             <label for="due" class="col-md-4 col-form-label text-md-right">{{ __('Due date') }}</label>
 
                             <div class="col-md-6">
-                                <input id="due" type="date" class="today form-control{{ $errors->has('due') ? ' is-invalid' : '' }}" name="due" value="{{ old('due') }}" required>
+                                <input id="due" type="date" onfocus="today()" class="today form-control{{ $errors->has('due') ? ' is-invalid' : '' }}" name="due" value="{{ old('due') }}" required>
 
                                 @if ($errors->has('due'))
                                     <span class="invalid-feedback" role="alert">
@@ -69,7 +69,7 @@
                             <div class="col-md-6">
                                 
                                 <select name="priority">
-                                    <option value="0" selected>Normal</option>
+                                    <option value="0" >Normal</option>
                                     <option value="1">Urgent</option>
                                 </select>
                             </div>
@@ -81,8 +81,8 @@
                             <div class="col-md-6">
                                 
                                 <select name="status">
+                                    <option value="0">Not completed</option>
                                     <option value="1">completed</option>
-                                    <option value="0" selected>Not completed</option>
                                 </select>
                             </div>
                         </div>           

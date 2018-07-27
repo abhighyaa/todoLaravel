@@ -9,7 +9,8 @@
                 <div class="card-body">
                     @if (count($tasks)>0)
                         @foreach ($tasks as $task)
-                            <div class="task">
+                            <div class="task display">
+                                <div hidden>{{$task->id}}</div>
                                 <div class="row ml-2">
                                         <a href="/task/{{$task->id}}" id="title"><h3>
                                         <b>{{$task->task}}</b></h3></a>
@@ -33,7 +34,7 @@
                                                 <a href="/status/{{$task->id}}" class="do"><img src="{{url('images/done.png')}}" alt="do" width="30" height="30"></a>  
                                             @endif
                                                 <a href="/unarchive/{{$task->id}}" class="archive"><img src="{{url('images/unarchive.png')}}" width="30" height="30"></a>
-                                                <a href="#" class="deletetask"><img src={{url('images/delete.png')}} alt="" width="20" height="20"></a>
+                                                <a href="#" class="deletetask"><img src={{url('images/delete.png')}} alt="" width="20" height="20"></a><div hidden>{{$task->id}}</div>
                                         </div>
                                     </div>
                                     <br>
@@ -47,7 +48,7 @@
                         No archived Tasks
                     @endif
 
-                    <br><br><hr><br>
+                    <br>
                     
                         <a href="/home">{{ __('Go to home page') }}</a>
                    

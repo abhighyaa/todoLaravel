@@ -11,7 +11,7 @@
                     <br><br><hr><br>
                     @if (count($tasks)>0)
                         @foreach ($tasks as $task)
-                            <div class="task">
+                            <div class="display">
                                 <div class="row ml-2">
                                         <!-- <a href="/task/{{$task->id}}" id="title"><h3>
                                         <b>{{$task->task}}</b></h3></a> -->

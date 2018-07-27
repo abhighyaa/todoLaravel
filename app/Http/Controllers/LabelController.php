@@ -77,8 +77,10 @@ class LabelController extends Controller
         //     $query->whereName($labelLabel);
         //   })->get();
         
-            $tasks= Label::find($label->id)->tasks;
-          
+        $tasks= Label::find($label->id)->tasks;
+        $tasks = $tasks->filter(function($task){
+            return $task->deleted != 1;
+        });
         return view('labels.show',compact('tasks','labelname','labels'));
     }
 

@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use App\Label;
 use App\Notification;
 use App\Notifications\OverdueTask;
+use App\Notifications\Reminder;
 use Session;
 class HomeController extends Controller
 {
@@ -35,12 +36,7 @@ class HomeController extends Controller
     public function index()
     {   
         $user = Auth::user()->id;
-        $count = count(DB::table('notifications')
-                ->where('notifiable_id','=',Auth::user()->id)
-                ->where('read_at','=','NULL')
-                ->get());
-       
-        session()->put('notifications', $count);
+        
         $tasks = Task::getTasks();
         $labels = Label::getLabels();
         $found=0;
@@ -74,31 +70,39 @@ class HomeController extends Controller
             
         }
         $tasks = Task::getTasks();
-        return view('home',compact('tasks'));
+        $labels = Label::getLabels();
+        return view('home',compact('tasks','labels'));
     }
 
     public function notify(){
-        $tasks = Task::all();
-        if (!empty($tasks)){
-            $notifications = Notification::all();
-            foreach ($tasks as $task){
-                $date = Carbon::parse($task->due);
-                if ($date->isPast()){
-                    if(count($notifications)){
-                        foreach ($notifications as $notification){
-                            if(Auth::user()->id != $notification->notifiable_id && $notification->data['id']!= $task->id && $notification->notifiable_type != "App\Notifications\OverdueTask")
-                                Auth::user()->notify(new OverdueTask($task));
+        // $tasks = Task::all();
+        // if (!empty($tasks)){
+        //     $notifications = Notification::all();
+        //     foreach ($tasks as $task){
+        //         $date = Carbon::parse($task->due);
+        //         $reminder = Carbon::parse($task->reminder)->format('Y-m-d H:i');
+        //         $now = Carbon::now()->format('Y-m-d H:i');
+        //         //dd($now);
+        //         if ($date->isPast()){
+        //             if(count($notifications)){
+        //                 foreach ($notifications as $notification){
+        //                     if(Auth::user()->id != $notification->notifiable_id && $notification->data['id']!= $task->id && $notification->notifiable_type != "App\Notifications\OverdueTask")
+        //                         Auth::user()->notify(new OverdueTask($task));
                             
-                        }
-                    }
-                    else{
-                        Auth::user()->notify(new OverdueTask($task));
-                    }
-                }
+        //                 }
+        //              }
+        //         //     else{
+        //         //         Auth::user()->notify(new OverdueTask($task));
+        //         //     }
+        //         }
+        //         if($reminder==$now){
+        //             Auth::user()->notify(new Reminder($task));
+        //         }
 
-            }
-        }
-        return view('notifications.notification');
+        //     }
+        // }
+        $notifications = Auth::user()->unreadNotifications;
+        return view('notifications.notification',compact('notifications'));
     }
 
     public function readnotify()
@@ -108,7 +112,7 @@ class HomeController extends Controller
             //$user->unreadNotifications()->update(['read_at' => now()]);
             $n->markAsRead();
         });
-        return redirect()->home();
+        return response()->json(array("msg","success"),200);
     }
 
     public function myorder(){
@@ -127,12 +131,20 @@ class HomeController extends Controller
         if (!empty($tasks)){
             $notifications = Notification::all();
             foreach ($tasks as $task){
+                
+                $now = Carbon::now()->format('Y-m-d H:i');
+            
                 $date = Carbon::parse($task->due);
                 $user = $task->user;
                 if ($date->isPast()){
                     $user->notify(new OverdueTask($task));
                 }
-                
+                if($task->reminder!=Null){
+                    $reminder = Carbon::parse($task->reminder)->format('Y-m-d H:i');
+                    if($reminder===$now){
+                        $user->notify(new Reminder($task));
+                    }
+                }
 
             }
         }

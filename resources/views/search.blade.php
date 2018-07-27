@@ -9,7 +9,7 @@
                 <div class="card-body">
                     @if (count($searchedTasks)>0)
                         @foreach ($searchedTasks as $searchedTask)
-                            <div class="task">
+                            <div class="task display">
                                 <a href="/task/{{$searchedTask->id}}"><h3><b>{{$searchedTask->task}}</b></h3></a><br>
                                 {{$searchedTask->description}}
                                 <br><br><br><hr><br>

@@ -7,17 +7,17 @@
                 <div class="card-header">Notifications</div>
 
                 <div class="card-body notifications">
-                   @if (count(Auth::user()->unreadNotifications)>0 ) 
-                        @foreach (Auth::user()->unreadNotifications as $notification)
+                   @if (count($notifications)>0 ) 
+                        @foreach ($notifications as $notification)
                             <div class="notification">
                                     @include ('notifications.'.class_basename($notification->type))
                                     <br><hr><br>
                             </div>
                         @endforeach
-                        <form method="POST" action="/notifications">
+                        <!-- <form method="POST" action="/notifications">
                             @csrf
                             <button type="submit">Mark as Read</button>
-                        </form>
+                        </form> -->
                     @else
                         No new notifications :D 
                     @endif

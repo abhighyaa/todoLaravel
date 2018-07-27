@@ -24,9 +24,9 @@
                                             @endif
                                         </div>
                                         <div class="onhover strike ml-auto">
-                                            @if($task->pin==1)
-                                                <a href="/pin/{{$task->id}}"><img src="{{url('images/pinned.png')}}" alt="" width="40" height="40"></a>
-                                            @else
+                                            @if($task->pin!=1)
+                                                <!-- <a href="/pin/{{$task->id}}"><img src="{{url('images/pinned.png')}}" alt="" width="40" height="40"></a>
+                                            @else -->
                                                 <a href="/pin/{{$task->id}}"><img src="{{url('images/pin1.png')}}" alt="" width="30" height="30"></a>
                                             @endif
                                             @if($task->status==1)
@@ -35,7 +35,13 @@
                                                 <a href="/status/{{$task->id}}" ><img class="do" src="/images/done.png" alt="do" width="30" height="30"></a>  
                                             @endif
                                                 <div hidden>{{$task->id}}</div>
+                                                @if($task->archived==0)
                                                 <a href="/archive/{{$task->id}}" class="archive"><img src="{{url('images/archive.png')}}" width="30" height="30"></a>
+                                                @else
+                                                    <a href="/unarchive/{{$task->id}}" class="unarchive"><img src="{{url('images/unarchive.png')}}" width="30" height="30"></a>
+                                                @endif  
+                                            <div hidden>{{$task->id}}</div>  
+
                                                 <a href="#" class="deletetask"><img src={{url('images/delete.png')}} alt="" width="20" height="20"></a>
                                                 <div hidden>{{$task->id}}</div>
                                         </div>
@@ -94,14 +100,12 @@
                                         </div>
                                         
                                         <br><hr><br>
-                            </div>   
+                            </div><div hidden>{{$task->id}}</div>   
                         @endforeach
                     @else
                         No tasks
                         <a href="/task/create">Add some here..</a>
                     @endif
-
-                    <a href="/changeorder">Change order</a>
                 </div>
             </div>
         </div>

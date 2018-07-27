@@ -27,16 +27,16 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
-        // $schedule->call(function () {
-        //     DB::table('notifications')->delete();
-        // })->everyMinute();
+        $schedule->call(function () {
+            DB::table('notifications')->delete();
+        })->everyMinute();
         //timezone('Asia/Kolkata')->dailyAt('14:59')->thenPing('/notifications');
         //;
         //daily();
 
-        //$schedule->call('App\Http\Controllers\HomeController@scheduleNotifications')->everyMinute();
-        $schedule->call('App\Http\Controllers\TaskController@deleteTrashed')->everyMinute();
-           
+        $schedule->call('App\Http\Controllers\HomeController@scheduleNotifications')->everyMinute();
+        $schedule->call('App\Http\Controllers\TaskController@deleteTrashed')->everyMinute();//weekly();
+  
     }
 
     /**

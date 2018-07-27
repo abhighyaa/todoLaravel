@@ -7,6 +7,7 @@ use App\Task;
 use App\Label;
 use Carbon\Carbon;
 use DB;
+use Auth;
 
 class TaskController extends Controller
 {
@@ -18,15 +19,17 @@ class TaskController extends Controller
 
     public function create(Request $request)
     {      
+      
         $task=Task::Create([
             'user_id'=>auth()->id(), 
             'task'=> request('task'),
-            'description'=>request('description'),
-            'due'=>request('due'),
-            'label'=>"Pivot",
-            'priority'=>request('priority'),
-            'status'=>request('status')
-        ]);
+            'description'=>request('description')]);
+            $task->due=request('due');
+            $task->label="Pivot";
+            $task->priority=request('priority');
+            $task->status=request('status');
+            $task->save();
+        
         $labelIds = $request->input('label');
         
         $task->labels()->attach($labelIds);
@@ -75,14 +78,17 @@ class TaskController extends Controller
 
     public function search(){
         $val=request('val');
-        $searchedTasks= Task::where('task','LIKE','%'.$val.'%')->orWhere('description','LIKE','%'.$val.'%')->get();
+        $searchedTasks= Task::where('user_id', '=', Auth::user()->id)
+                            ->where('task','LIKE','%'.$val.'%')
+                            ->get();
 
         return response()->json(array('msg'=> $searchedTasks), 200);
     }
 
     public function myday(){
         $tasks=Task::sortedByMyDay();
-        return view('home',compact('tasks'));
+        $labels=Label::getLabels();
+        return view('home',compact('tasks','labels'));
     }
 
     public function time(){

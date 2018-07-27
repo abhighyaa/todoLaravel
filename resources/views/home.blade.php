@@ -9,7 +9,7 @@
                 <div class="card-body">
                     @if (count($tasks)>0)
                         @foreach ($tasks as $task)
-                            <div class="task">
+                            <div class="task display">
                             <div hidden>{{$task->id}}</div>
                                 <div class="row ml-2">
                                         <a href="/task/{{$task->id}}" id="title"><h3>

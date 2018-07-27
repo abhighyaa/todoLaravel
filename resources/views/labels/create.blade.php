@@ -4,7 +4,7 @@
 
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Create a new Task</div>
+                <div class="card-header">Create a new Label</div>
 
                 <div class="card-body">
                     <form method="POST" enctype="multipart/form-data" action="/{{Auth::user()->id}}/label/create">

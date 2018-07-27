@@ -9,7 +9,7 @@
                 <div class="card-body">
                     @if (count($tasks)>0)
                         @foreach ($tasks as $task)
-                            <div class="task">
+                            <div class="task display">
                                 <div hidden>{{$task->id}}</div>
                                 <div class="row ml-2">
                                         <a href="/task/{{$task->id}}" id="title"><h3>
@@ -22,6 +22,7 @@
                                                 <a href="/status/{{$task->id}}" ><img class="undo" src="/images/finallydone.png" alt="" width="30" height="30" class="mr-4"></a>  
                                                 <div hidden>{{$task->id}}</div>
                                             @endif
+                                            
                                         </div>
                                         <div class="onhover strike ml-auto">
                                             @if($task->pin==1)
@@ -35,7 +36,12 @@
                                                 <a href="/status/{{$task->id}}" ><img class="do" src="/images/done.png" alt="do" width="30" height="30"></a>  
                                             @endif
                                                 <div hidden>{{$task->id}}</div>
+                                            @if($task->archived==0)
                                                 <a href="/archive/{{$task->id}}" class="archive"><img src="{{url('images/archive.png')}}" width="30" height="30"></a>
+                                            @else
+                                                <a href="/unarchive/{{$task->id}}" class="unarchive"><img src="{{url('images/unarchive.png')}}" width="30" height="30"></a>
+                                            @endif  
+                                            <div hidden>{{$task->id}}</div>  
                                                 <a href="#" class="deletetask"><img src={{url('images/delete.png')}} alt="" width="20" height="20"></a>
                                                 <div hidden>{{$task->id}}</div>
                                         </div>

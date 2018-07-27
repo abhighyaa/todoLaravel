@@ -13,7 +13,7 @@
                         <div class="form-group row justify-content-center">
 
                             <div class="col-md-6">
-                                <a href="/task/create"><img src={{url("images/images.png")}} width="20" height="20"></a> &nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="/{{Auth::user()->id}}/label/create"><img src={{url("images/images.png")}} width="20" height="20"></a> &nbsp;&nbsp;&nbsp;&nbsp;
                                 Add a new label<br><br> 
                             </div>
                 
@@ -41,9 +41,9 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <a href="/home" class="btn btn-primary">
                                     {{ __('Done') }}
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </form>

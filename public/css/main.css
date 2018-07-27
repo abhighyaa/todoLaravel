@@ -2,7 +2,8 @@
     margin-left: 250px;
     width: 350px;
     height: 40px;
-    background:rgba(233, 230, 230,0.2);
+   /* background:rgba(233, 230, 230,0.2); */
+   background: white;
 }
 
 #search{
@@ -40,3 +41,29 @@
     text-decoration: line-through;
 }
 
+.navbar{
+    background-color: rgb(59, 89, 152);
+   
+} 
+.navbar-brand{
+    color :white !important;
+}
+.card-header{
+    background-color: rgba(59, 89, 152,1);
+    color: white;
+}
+b{
+    color:rgba(59, 89, 152,1) !important;
+}
+/* .py-4 a{
+    background-color:rgb(223,227,238);
+} */
+.py-4 a{
+    color:rgba(59, 89, 152,1) !important;
+}
+ /* html,body{
+    color: red;
+}  */
+.dis{
+    pointer-events: none;
+}

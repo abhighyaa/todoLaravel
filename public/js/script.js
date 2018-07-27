@@ -26,12 +26,12 @@ $(document).ready(function(){
                
                 res ="";
                 for (i in data["msg"]){
-                   res +=  '<div class="task">\
+                   res +=  '<div class="task display ">\
                                 <a href="/task/'+data.msg[i].id+'"><h3>\
                                 <b>'+ data.msg[i].task+'</b></h3></a><br>\
                                 '+ data.msg[i].description+'\
                                 <br><br><br><hr><br>\
-                            </div>';
+                            </div><div hidden>'+data.msg[i].id+'</div>';
                 }
                 
                     // res += data.msg[i];
@@ -76,6 +76,7 @@ $(document).ready(function(){
 
     var changed;
     $("body").on('click','.editlab',function(){
+        $(this).prev().prev().addClass('dis');
         changed=$(this).prev().text();
         $(this).prev().text("");
         $(this).prev().append('<input autofocus class="width" placeholder="'+changed+'">\
@@ -83,9 +84,13 @@ $(document).ready(function(){
         
     });
 
+    // $("body").on('focus',".width",function(){
+    //     $
+    // })
+
     $("body").on('click','#changed',function(){
         newlabel = $(".width").val();
-       
+        $(this).prev().addClass('en');
         if(newlabel!=""){
             // alert(newlabel);
             // alert(changed);
@@ -114,10 +119,11 @@ $(document).ready(function(){
         }
     });
 
-    $("body").on('mouseover','.task',function(){
+    $("body").on('mouseover','.display',function(){
         $(".onhover").show();
         $(".check").hide();
     });
+
     $("body").on('mouseleave','.task',function(){
         $(".onhover").hide();
         $(".check").show();
@@ -184,6 +190,10 @@ $(document).ready(function(){
     $("body").on('click',".addlabel",function(){
         $(this).next().show();
     })
+ 
+    $("#due").focusin(function(){
+        today();
+    });
 
     $("body").on('change','.toaddcheck',function(){
         label = $(this).val();
@@ -215,10 +225,36 @@ $(document).ready(function(){
         $(".undo").parents(".strike").siblings("#title").children().children().addClass("strikethrough");
     }
 
-    $("body").on('dblclick',".task",function(){
+    $("body").on('dblclick',".display",function(){
         task = $(this).next().text();
+        //alert(task);
         window.location.replace("/task/"+task+"/edit");
     });
+
+    var pathname = window.location.pathname;
+    //alert(pathname)
+    if(pathname=="/notifications"){
+       //alert(pathname)
+        $.ajax({
+            type:'POST',
+            url:"/notif",
+            data: { 
+                _token : $('meta[name="csrf-token"]').attr('content') 
+            },
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            },
+            
+            success:function(data){
+                console.log(data);
+                //location.reload(true);
+            },
+            error:function(){
+                alert("An error has occured !");
+            } 
+        
+        });
+    }
 
     // $('#sortable').sortable({
     //     start : function(event, ui) {
@@ -247,5 +283,23 @@ $(document).ready(function(){
     //     axis : 'y'
     // });
  });
-
+ function to()
+ {
+     alert('yes');
+ }
+ function today(){
+    
+    var d = new Date();
+    var month = d.getMonth() + 1;
+    if(month<10)
+        month='0'+month;
+    var day = d.getDate();
+    if(day<10)
+        day='0'+day;
+    var year = d.getFullYear();
+    var t = year+"-"+month+"-"+day;
+    // alert(t)
+    // // //return t;
+     document.getElementById("due").setAttribute("min",t);
+}
 

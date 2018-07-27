@@ -83,7 +83,7 @@ Route::post('/change/label','LabelController@changeLabel');
 Route::post('/delete/label','LabelController@delete');
 
 Route::get('/notifications','HomeController@notify');
-Route::post('/notifications','HomeController@readnotify');
+Route::post('/notif','HomeController@readnotify');
 
 Auth::routes();
 

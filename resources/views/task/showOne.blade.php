@@ -8,7 +8,7 @@
 
                 <div class="card-body">
                   
-                       <div class="task">
+                       <div class="task display">
                             <h3><b>Task Name : {{$task->task}}</b></h3><hr>
                             Task description : {{$task->description}}
                             <br>

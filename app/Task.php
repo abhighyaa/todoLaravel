@@ -33,6 +33,10 @@ class Task extends Model
     static public function sortedByMyDay(){
         return static::where('user_id', '=', Auth::user()->id)
                         ->whereDate('due','=',Carbon::today()->format('Y-m-d'))
+                        ->where('deleted','=','0')
+                        ->orderBy('status','ASC')
+                        ->orderBy('pin','DESC')
+                        ->orderBy('priority','DESC')
                         ->get();
     }
 
